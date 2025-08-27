@@ -1,1 +1,1 @@
-export { GetTrack } from "./track"
+export { GetTrack, GetTracksByID } from "./track"
