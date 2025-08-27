@@ -1,17 +1,23 @@
 name: Publish Package
 on:
   push:
-    branches: main
+    tags:
+      - 'v*'
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: "20"
-      - run: npm ci
-      - run: npm test
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+          bun-version: latest
+          registry-url: 'https://registry.npmjs.org'
+      - run: bun upgrade
+      - run: bun install
+      - run: bun test
+      - run: bun publish --access public
+        env:
+          BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
