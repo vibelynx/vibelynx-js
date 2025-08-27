@@ -1,16 +1,16 @@
 {
   "name": "@vibelynx/vibelynx-js",
   "version": "0.1.2",
-  "module": "./src/index.ts",
   "license": "MIT",
-  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
+    "build": "tsup",
     "test": "bun test"
   },
   "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
+    "@types/bun": "latest",
+    "tsup": "^8.5.0"
   }
 }
