@@ -7,8 +7,14 @@ test("GetTrack returns a signle track", async () => {
   expect(track.id).toBe("bc0cba17759d905b")
 })
 
-test("GetTracksById returns an array of tracks", async () => {
+test("GetTracksByID returns an array of tracks", async () => {
   const { tracks, error } = await GetTracksByID(["bc0cba17759d905b"])
+  expect(error).toBeNull()
+  expect(tracks).not.toBeNull()
+})
+
+test("GetTracksByURL returns an array of tracks", async () => {
+  const { tracks, error } = await GetTracksByURL(["https://open.spotify.com/track/3TK767LsXGS2U5OCgjsrCN"])
   expect(error).toBeNull()
   expect(tracks).not.toBeNull()
 })

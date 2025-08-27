@@ -25,3 +25,17 @@ export async function GetTracksByID(ids: string[]): Promise<{ tracks: Track[] | 
 
   return { tracks, error }
 }
+
+export async function GetTracksByURL(urls: string[]): Promise<{ tracks: Track[] | null, error: Error | null }> {
+  let { data, error } = await Get(`/tracks?urls=${urls}`)
+
+  let tracks: Track[] = []
+  data.map((track: Track) => {
+    tracks.push({
+      id: track.id,
+      title: track.title
+    })
+  })
+
+  return { tracks, error }
+}
