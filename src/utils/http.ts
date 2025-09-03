@@ -1,10 +1,11 @@
-export async function Get(endpoint: string): Promise<{ data: any, error: Error | null }> {
+export async function Get(endpoint: string, token?: string): Promise<{ data: any, error: Error | null }> {
   const response = await fetch(
     "https://api.vibelynx.app/v1" + endpoint,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`,
       }
     }
   );
