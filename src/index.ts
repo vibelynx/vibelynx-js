@@ -1,3 +1,2 @@
-export { GetTrack, GetTracksByID, GetTracksByURL, GetUserHistory } from "./api"
-
-export type { Track } from "./types"
+export * from "./api"
+export type * from "./types"
