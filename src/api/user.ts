@@ -2,7 +2,7 @@ import { Get } from "../utils/http"
 import { History } from "../types/user"
 
 export async function GetUserHistory(User_id: string, session_token: string): Promise<{ history: History[], error: Error | null }> {
-  const { data, error } = await Get(`/users/${User_id}/history`, session_token)
+  const { data, error } = await Get(`/users/${User_id}/history`, { token: session_token })
 
   if (error || !data) {
     return { history: {} as History[], error }
