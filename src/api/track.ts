@@ -1,5 +1,5 @@
-import type { Track } from "../types"
 import { Get } from "../utils/http"
+import type { Track } from "../types"
 
 export async function GetTrack(id: string): Promise<{ track: Track, error: Error | null }> {
   const { data, error } = await Get(`/tracks/${id}`)
