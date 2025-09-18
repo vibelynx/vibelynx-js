@@ -10,19 +10,18 @@ export async function GetAlbum(id: string): Promise<{ album: Album, error: Error
 
   const album: Album = {
     id: data.id,
-    isrc: data.isrc,
+    upc: data.upc,
+    album_type: data.album_type,
     title: data.title,
-    album: data.album,
     artists: data.artists,
-    platforms: data.platforms,
-    artwork: data.artwork,
-    preview: data.preview,
-    explicit: data.explicit,
     genre: data.genre,
-    duration: data.duration,
+    artwork: data.artwork,
+    platforms: data.platforms,
+    track_count: data.track_count,
+    tracks: data.tracks,
     release_date: data.release_date,
-    created_at: data.created_at,
-    updated_at: data.updated_at,
+    record_label: data.record_label,
+    copyright: data.copyright,
   }
 
   return { album, error: null }
